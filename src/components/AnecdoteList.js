@@ -9,7 +9,7 @@ const AnecdoteList = (props) => {
   
     const vote = async (a) => {
       props.voted(a)
-      props.setNotification(`you voted '${a.content}'`, 10)
+      props.setNotification(`you voted '${a.content}'`, 5)
   }
     return (
     <div>     

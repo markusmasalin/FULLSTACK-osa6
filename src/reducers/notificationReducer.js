@@ -1,16 +1,16 @@
 
-const notificationReducer = (state = '', action) => {
+const notificationReducer = (state = null, action) => {
     console.log('state now: ', state)
     console.log('action', action)
 
     switch (action.type) {
       case 'NOTIFICATION':
-            console.log('notification voted' + action.data)
-      return  action.data
+            console.log('notification voted' + action.notification)
+      return  action.notification
       case 'CLEAR':
         return null
       default:
-        return null
+        return state
     }
   }
 
@@ -19,9 +19,14 @@ const notificationReducer = (state = '', action) => {
     return async dispatch => {
         dispatch({
             type: 'NOTIFICATION',
-            data: content, 
-            time,
+            notification: content, 
             })
+            time = time * 1000
+            setTimeout(() =>{
+                dispatch({
+                    type: "CLEAR",
+                })
+            },time)
     }
   }
 

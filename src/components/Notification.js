@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import notificationReducer from '../reducers/notificationReducer'
+
 
 const Notification = (props) => {
   const style = {

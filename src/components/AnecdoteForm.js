@@ -13,7 +13,7 @@ const AnecdoteForm = (props) => {
     
     props.createAnecdote(anecdote)
    
-    props.setNotification(`you voted '${anecdote.content}'`, 10)
+    props.setNotification(`you have created '${anecdote}'`, 5)
     
   }
 

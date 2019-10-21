@@ -1,33 +1,28 @@
 import React from 'react';
+import  { useEffect } from 'react' 
+import { connect } from 'react-redux'
+import AnecdoteList from './components/AnecdoteList'
+import AnecdoteForm from './components/AnecdoteForm'
+import Filter from './components/Filter'
+import { initializeAnecdotes } from './reducers/anecdoteReducer'
+
+
+
 
 const App = (props) => {
-  const anecdotes = props.store.getState()
-
-  const vote = (id) => {
-    console.log('vote', id)
-  }
+  useEffect(() => {
+      props.initializeAnecdotes()
+  }, [])
 
   return (
     <div>
-      <h2>Anecdotes</h2>
-      {anecdotes.map(anecdote =>
-        <div key={anecdote.id}>
-          <div>
-            {anecdote.content}
-          </div>
-          <div>
-            has {anecdote.votes}
-            <button onClick={() => vote(anecdote.id)}>vote</button>
-          </div>
-        </div>
-      )}
-      <h2>create new</h2>
-      <form>
-        <div><input /></div>
-        <button>create</button>
-      </form>
+      <h1>Programming anecdotes</h1>
+        <Filter/>
+        <AnecdoteList />
+        <AnecdoteForm />
+
     </div>
   )
 }
 
-export default App
+export default connect(null, { initializeAnecdotes }) (App)
